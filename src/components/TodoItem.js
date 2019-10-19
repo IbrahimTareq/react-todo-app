@@ -1,7 +1,13 @@
 import React, {useState} from "react"
 
 function TodoItem(props) {
-    const [ checked, setChecked ] = useState(props.item.completed)
+    const completedStyle = {
+        fontStyle: "italic",
+        color: "#cdcdcd",
+        textDecoration: "line-through"
+    }
+
+    const [checked, setChecked] = useState(props.item.completed)
 
     return (
         <div className="todo-item">
@@ -9,7 +15,7 @@ function TodoItem(props) {
             checked={checked} 
             onChange={(e) => setChecked(e.target.checked)}
             />
-            <p>{props.item.text}</p>
+            <p style={checked ? completedStyle : null}>{props.item.text}</p>
         </div>
     )
 }
